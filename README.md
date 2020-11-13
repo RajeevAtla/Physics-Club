@@ -1,1 +1,1 @@
-# Physics-Club
+# Physics Club
