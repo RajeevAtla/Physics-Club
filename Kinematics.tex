@@ -1,0 +1,80 @@
+\documentclass[11pt]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{fancyhdr}
+\usepackage{answers}
+\usepackage{lastpage}
+\usepackage{datetime}
+\usepackage{titlesec}
+\usepackage{makeidx}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage{evan}[fancy, sexy, hdr, colorsec]
+\usepackage[dvipsnames]{xcolor}
+\usepackage[margin = 1in, letterpaper, portrait]{geometry}
+\usepackage[version = 4]{mhchem}
+
+\everymath{\displaystyle}
+
+\pagestyle{fancy}
+\rhead{Last Updated: \today}
+\lhead{Kinematics Problem Set}
+\cfoot{Page \thepage\ of \pageref*{LastPage}}
+
+\renewcommand*\contentsname{\S Table of Contents}
+
+\makeindex
+
+
+\begin{document}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\color{red}\S \thesection}{0.5em}{}
+\titleformat{\subsection}{\normalfont\Large\bfseries}{\color{olive}\S \thesubsection}{0.5em}{}
+\titleformat{\subsubsection}{\normalfont\Large\bfseries}{\color{blue}\S \thesubsubsection}{0.5em}{}
+
+\begin{center}
+    \Large \textbf{Kinematics Problem Set}
+\end{center}
+\begin{center}
+    \Large Rajeev Atla
+\end{center}
+
+\newpage
+
+\section{Problem 1}
+Using calculus and/or geometry, derive the equation
+
+$$
+x = x_0 + v_0 t + \frac{1}{2} at^2
+$$
+
+\section{Problem 2}
+For two vectors $\bm{a}$ and $\bm{b}$, prove the following inequalities:
+
+$$
+|\bm{a}| - |\bm{b}| \leq |\bm{a}+\bm{b}| \leq |\bm{a}|+ |\bm{b}|
+$$
+
+\section{Problem 3}
+A ball is thrown from the ground.
+The ball crosses the height $h_1$ twice, with $T_1$ seconds between crossings.
+Above, at a height of $h_2$, the ball takes $T_2$ seconds between crossings.
+Derive an expression for $g$, the acceleration due to gravity, in terms of these variables.
+
+\section{Problem 4}
+Bobby wants to swim across a river of width $w$.
+This river flows east to west with a velocity of $v_r$.
+In still water, Bobby can move in any direction with a speed of $v_b$.
+In what direction should Bobby move to minimize the time it takes for him to swim across the river.
+Hint: There are two cases, check both of them.
+
+\section{Problem 5}
+A rabbit is at the origin and a fox is at $(0, -a)$.
+At $t=0$, the rabbit begins moving with a velocity $\bm{v} = v \hat{x}$.
+Simultaneously, the fox begins running directly in the direction of the rabbit with speed $v$.
+After a long time, the distance between the two animals is $d$.
+Find $d$.
+
+
+\end{document}
