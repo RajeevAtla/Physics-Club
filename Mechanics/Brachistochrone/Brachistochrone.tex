@@ -3,6 +3,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage{textgreek}
 \usepackage{bm}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
 
 \usetheme{PaloAlto}
 \usecolortheme{rose}
@@ -187,7 +189,7 @@
 \frametitle{Lagrangians}
 \frametitle{Least Action Principle}
 \begin{itemize}
-    \item We need to minimize the time 
+    \item We need to choose $f(x)$ minimize the time 
     $$
     t_{12} = \int \limits_{P_1}^{P_2} \mathcal{L}(x) dx
     $$
@@ -196,7 +198,7 @@
     \pause
     \item Euler-Lagrange equation
     $$
-    \frac{d}{dt} \left (\frac{\partial \mathcal{L}}{\partial \dot{x}} \right) = \frac{\partial \mathcal{L}}{\partial x}
+    \frac{d}{dx} \left ( \frac{\partial \mathcal{L} }{\partial f'(x) } \right ) = \frac{\partial \mathcal{L}}{\partial f(x)}
     $$
 \end{itemize}
 \end{frame}
@@ -204,7 +206,6 @@
 \begin{frame}
 \frametitle{Lagrangians}
 \frametitle{Partial Derivatives}
-
 \begin{itemize}
     \item Symbol is $\partial$
     \pause
@@ -215,10 +216,78 @@
 \end{itemize}
 \begin{align*}
 \frac{\partial f(x,y)}{\partial x} &= 2 \\
+\pause
 \frac{\partial f(x,y)}{\partial y} &= 3 \\
 \end{align*}
+\end{frame}
+
+\begin{frame}
+\frametitle{Lagrangians}
+\framesubtitle{Beltrami's Idendtity}
+\begin{align*}
+\frac{d}{dx} \left ( \frac{\partial \mathcal{L} }{\partial f'(x) } \right ) &= \frac{\partial \mathcal{L}}{\partial f(x)} \\
+\mathcal{L}(x) &= \sqrt{\frac{1 + f'(x)^2}{2gf(x)}} \\
+\end{align*}
+\begin{itemize}
+    \pause
+    \item Anyone want to do this???
+    \pause
+    \item Time for a trick: Beltrami's Idendtity
+    \begin{itemize}
+        \item Notice that $\mathcal{L}(x)$ doesn't \textit{explicitly} depend on $x$
+        $$
+        \mathcal{L} - f'(x) \frac{\partial \mathcal{L}}{\partial f'(x)} = C
+        $$
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Lagrangians}
+\framesubtitle{Using Beltrami's Idendtity}
+\begin{align*}
+    C &= \mathcal{L} - f'(x) \frac{\partial \mathcal{L}}{\partial f'(x)} \\
+    \frac{\partial \mathcal{L}}{\partial f'(x)} &= \frac{f'(x)}{\sqrt{\left (2g f(x)  \right) \left (1 + f'(x)^2 \right)}} \\
+    C &= \frac{1}{\sqrt{2gf(x) \left (1 + f'(x)^2 \right)}} \\
+    \frac{1}{2gC^2} &= f(x) \left (1 + f'(x)^2 \right ) \\
+\end{align*}
+\end{frame}
+
+\begin{frame}
+\frametitle{Lagrangians}
+\framesubtitle{Solution}
+$$\frac{1}{2gC^2} = f(x) \left (1 + f'(x)^2 \right )$$
+\pause
+\begin{itemize}
+    \item So what's the solution???
+    \pause
+    \item It can be shown that this is a cycloid curve
+    \pause
+    \item Has to be parametrized
+    \begin{align*}
+    x (\theta) &= \frac{1}{4gC^2} \left (\theta - \sin{\theta} \right) \\
+    y (\theta) &= \frac{1}{4gC^2} \left (1 - \cos{\theta} \right) \\
+    \end{align*}
+    \pause
+    \item We can use $P_1 (x_1, y_1)$ and $P_2 (x_2, y_2)$ to find $C$
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Lagrangian}
+\framesubtitle{Visualizing the Solution}
+\begin{align*}
+    x (\theta) &= \frac{1}{4gC^2} \left (\theta - \sin{\theta} \right) \\
+    y (\theta) &= \frac{1}{4gC^2} \left (1 - \cos{\theta} \right) \\
+\end{align*}
+\begin{figure}[b]
+\pause
+\includegraphics[scale = 0.3]{Cycloid.jpg}
+\end{figure}
+
 
 \end{frame}
+
 
 
 \end{document}
