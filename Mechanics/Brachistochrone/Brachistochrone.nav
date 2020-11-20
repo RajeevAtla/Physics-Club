@@ -28,8 +28,14 @@
 \headcommand {\sectionentry {4}{Lagrangians}{35}{Lagrangians}{0}}
 \headcommand {\slideentry {4}{0}{1}{35/39}{}{0}}
 \headcommand {\beamer@framepages {35}{39}}
-\headcommand {\beamer@partpages {1}{39}}
-\headcommand {\beamer@subsectionpages {35}{39}}
-\headcommand {\beamer@sectionpages {35}{39}}
-\headcommand {\beamer@documentpages {39}}
-\headcommand {\gdef \inserttotalframenumber {9}}
+\headcommand {\slideentry {4}{0}{2}{40/41}{}{0}}
+\headcommand {\beamer@framepages {40}{41}}
+\headcommand {\slideentry {4}{0}{3}{42/44}{}{0}}
+\headcommand {\beamer@framepages {42}{44}}
+\headcommand {\slideentry {4}{0}{4}{45/48}{}{0}}
+\headcommand {\beamer@framepages {45}{48}}
+\headcommand {\beamer@partpages {1}{48}}
+\headcommand {\beamer@subsectionpages {35}{48}}
+\headcommand {\beamer@sectionpages {35}{48}}
+\headcommand {\beamer@documentpages {48}}
+\headcommand {\gdef \inserttotalframenumber {12}}

@@ -167,4 +167,58 @@
 \end{itemize}
 \end{frame}
 
+\begin{frame}
+\frametitle{More About Lagrangians}
+\begin{itemize}
+    \item Let the Lagrangian be
+    $$
+    \mathcal{L} = \sqrt{\frac{1 + y^{'2}}{2gy}}
+    $$
+    \pause
+    \item Remeber that $y = f(x)$
+    $$
+    \mathcal{L}(x) = \sqrt{\frac{1 + f'(x)^2}{2gf(x)}}
+    $$
+    \item $f'(x) = \frac{df(x)}{dx}$ (Lagrangian notation)
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Lagrangians}
+\frametitle{Least Action Principle}
+\begin{itemize}
+    \item We need to minimize the time 
+    $$
+    t_{12} = \int \limits_{P_1}^{P_2} \mathcal{L}(x) dx
+    $$
+    \pause
+    \item Any ideas?
+    \pause
+    \item Euler-Lagrange equation
+    $$
+    \frac{d}{dt} \left (\frac{\partial \mathcal{L}}{\partial \dot{x}} \right) = \frac{\partial \mathcal{L}}{\partial x}
+    $$
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Lagrangians}
+\frametitle{Partial Derivatives}
+
+\begin{itemize}
+    \item Symbol is $\partial$
+    \pause
+    \item Hold all other variables constant while taking a derivative
+    \pause
+    \item Let $f(x,y) = 2x+3y$, what are $\frac{\partial f(x,y)}{\partial x}$ and $\frac{\partial f(x,y)}{\partial y}$?
+    \pause
+\end{itemize}
+\begin{align*}
+\frac{\partial f(x,y)}{\partial x} &= 2 \\
+\frac{\partial f(x,y)}{\partial y} &= 3 \\
+\end{align*}
+
+\end{frame}
+
+
 \end{document}
