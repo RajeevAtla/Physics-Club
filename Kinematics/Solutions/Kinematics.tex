@@ -9,6 +9,7 @@
 \usepackage{titlesec}
 \usepackage{makeidx}
 \usepackage{graphicx}
+\graphicspath{ {./images/} }
 \usepackage{bm}
 \usepackage{evan}[fancy, sexy, hdr, colorsec]
 \usepackage[dvipsnames]{xcolor}
@@ -166,6 +167,13 @@ In still water, Bobby can move in any direction with a speed of $v_b$.
 In what direction should Bobby move to minimize the total distance he travels.
 Hint: There are two cases, check both of them.
 
+\subsection{Solution}
+The two cases are as follows: when $v_r > v_b$ and when $v_b > v_r$.
+To get full credit for the problem, you have to explicitly show both cases.
+
+\subsubsection{Case 1: $v_b > v_r $}
+In this case, 
+
 \newpage
 
 \section{Problem 5}
@@ -174,6 +182,50 @@ At $t=0$, the rabbit begins moving with a velocity $\bm{v} = v \hat{x}$.
 Simultaneously, the fox begins running directly in the direction of the rabbit with speed $v$.
 After a long time, the distance between the two animals is $d$.
 Find $d$.
+
+\subsection{Solution}
+\begin{figure}[h]
+\caption{Diagram}
+\centering
+\includegraphics[scale = 0.5]{diagram5.png}
+\end{figure}
+
+We also need to do some geometry (see next section).
+Let $O$ be the origin.
+Let $A$ be the position of the fox.
+Let $B$ be the position of the rabbit.
+Let $C$ be the intersection of the velocity vectors when extended outwards (this isn't really physically relevant, but we use it later).
+Let $D$ be the interesection of the horizontal and vertical components of the fox's velocity (also not physically relevant, but we also use it later).
+
+\subsubsection{Some Geometry}
+
+We start with some angle-chasing.
+Let $\angle ABC \equiv \theta$.
+By definition of components, $\overline{DB} \perp \overline{AD}$, so $\angle ABD = \theta - \frac{\pi}{2}$.
+By complementary angles, $\angle BAD = \frac{\pi}{2} - \angle ABD = \pi - \theta $.
+Let $r \equiv \overline{AB}$ and $x \equiv \overline{AD}$.
+
+\subsubsection{Critical Lemma}
+
+We seek to show that throughout the motion, $r+x$ is conserved.
+Consider the frame of the rabbit.
+In this frame, the fox's horizontal velocity is $ v \cos{\theta}$.
+Therefore,
+
+$$\frac{dx}{dt} = v \cos{\theta} - v$$
+
+Now consider the frame of the fox.
+In this frame, the rabbit is running away at speed $- v \cos{\theta}$, so
+
+$$ \frac{dr}{dt} = v - v \cos{\theta} $$
+
+Adding the two, we see that
+
+$$\frac{d}{dt} \left (r+x \right) = 0$$
+
+Implying that the quantity is conserved.
+Initially, $r+x = a$. After a time $t \gg \frac{a}{v}$ has passed, there is effectively no vertical distance, so $r = x = \frac{a}{2}$.
+Notice that we used a conservation law here. Usually, we would have used a standard conservation law, like conservation of energy or momentum, but instead, we made our own conservation law.
 
 
 \end{document}
