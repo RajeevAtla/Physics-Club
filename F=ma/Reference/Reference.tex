@@ -1,0 +1,291 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin = 0.75in]{geometry}
+\usepackage{mathtools}
+\usepackage[cm]{sfmath}
+\everymath{\displaystyle}
+\renewcommand{\familydefault}{\sfdefault}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\begin{document}
+
+\begin{center}
+    \Large Reference Materials for F=ma
+\end{center}
+
+\section{Table of Constants}
+
+\begin{center}
+    \begin{tabular}{ ||c|c|c|| } 
+        \hline
+        \hline
+        \textbf{ Constant} & \textbf{Value} & \textbf{SI Base Units} \\ 
+        \hline
+        \hline
+        $g$ & $10$ & $\frac{\text{m}}{\text{s}^2}$ \\ 
+        \hline
+        $G$ & $6.67 \cdot 10^{-11}$ & $\frac{\text{m}^3}{\text{kg}\cdot\text{s}^2}$\\ 
+        \hline
+        $M_E$ & $6.0 \cdot 10^{24}$ & kg \\
+        \hline
+        $R_E$ & $6.4 \cdot 10^{6}$ & m \\
+        \hline
+        $\text{AU}$ & $1.50 \cdot 10^{11}$ & m\\
+        \hline
+        $c$ & $3.0 \cdot 10^8$ & $\frac{\text{m}}{\text{s}}$ \\
+        \hline
+        $\rho_w$ & $997$ & $\frac{\text{kg}}{\text{m}^3}$ \\
+        \hline
+        \hline
+    \end{tabular}
+\end{center}
+
+
+\section{Dimensional Analysis}
+\subsection{Notation}
+
+$$
+[g] = \frac{\text{m}}{\text{s}^2}
+$$
+
+\subsection{Buckingham Pi Theorem}
+If you have $N$ unique quantities with $D$ independent dimensions, then you can form $N-D$ dimensionless quantities.
+Dimensional analysis has nothing to say about them.
+
+
+\section{Error Analysis}
+
+\subsection{Definition}
+For a measurement $x$, we can often say that it has an error $\delta x$.
+For professional physicists (who are most of the writers of the F=ma), $\delta x$ is taken to mean the standard deviation of a Gaussian with mean $x$.
+Go back to Gaussians if you ever get confused.
+
+\subsection{Error Propogation Formulae}
+
+\begin{align*}
+    Q = x \pm y & \Rightarrow \delta Q = \sqrt{\left (\delta x \right ) ^2 + \left (\delta x \right ) ^2} \\
+    Q = \frac{xy}{z} & \Rightarrow \frac{\delta Q}{Q} = \sqrt{\left ( \frac{\delta x}{x} \right)^2 + \left ( \frac{\delta y}{y} \right)^2 + \left ( \frac{\delta z}{z} \right)^2} \\
+    Q = x^n & \Rightarrow \delta Q = \left | \frac{n}{x} \right| \delta x \\
+    Q = f(x) & \Rightarrow \delta Q \approx  \left | \frac{df}{dx} \right | \delta x\\
+    Q = f(x, y, z) & \Rightarrow \delta Q \approx \sqrt{\left ( \frac{\partial f}{\partial x} \right)^2 \left ( \delta x \right)^2 +  \left( \frac{\partial f}{\partial y} \right)^2 \left ( \delta y \right )^2 + \left( \frac{\partial f}{\partial z} \right)^2 \left ( \delta z \right )^2 }\\
+\end{align*}
+
+Last 2 only hold true if you can make the tangent line approximation.
+
+\section{Approximations}
+
+\begin{center}
+    \begin{tabular}{ ||c|c|c|| } 
+        \hline
+        \hline
+        \textbf{ Exact } & \textbf{Approximate} & \textbf{Error} \\ 
+        \hline
+        \hline
+        $e^{x}$ & $1 + x + \frac{1}{2} x^2$ & $\mathcal{O} \left (x^3 \right)$ \\
+        \hline
+        $\sin{x}$ & $x - \frac{x^3}{6}$ & $\mathcal{O} \left (x^5 \right)$ \\
+        \hline
+        $\cos{x}$ & $1 - \frac{1}{2} x^2 $ & $\mathcal{O}(x^4)$ \\
+        \hline
+        $\tan{x}$ & $x + \frac{1}{3} x^3 $ & $\mathcal{O} (x^5)$\\
+        \hline
+        $\left (1 + x \right)^n$ & $1 + nx$ & $\mathcal{O} (x^2 n^2)$ \\
+        \hline
+        $\ln{\left (1 + x \right)}$ & $x - \frac{1}{2} x^2$ & $\mathcal{O}(x^3)$ \\
+        \hline
+        \hline
+    \end{tabular}
+\end{center}
+All assume that $x \ll 1$.
+
+
+\section{1D Kinematics}
+\begin{align*}
+    x &= x_0 + v_0 \left (t - t_0 \right ) + \frac{1}{2} g \left ( t - t_0 \right )^2 \\
+    v &= v_0 + a \left (t - t _0 \right) \\
+    v^2 &= v_0^2 + 2a \left (x - x_0 \right) \\
+    x &= x_0 + \frac{1}{2} \left ( v + v_0 \right) \left ( t - t_0 \right) \\
+\end{align*}
+
+\section{2D Kinematics}
+\begin{align*}
+    x(t) &= x_0 + v_0 \left (t - t_0 \right) \cos{\theta} \\
+    y(t) &= y_0 + v_0 \left (t - t_0 \right) \sin{\theta} - \frac{1}{2} g\left (t - t_0 \right)^2 \\
+    \max{y} &= y_0 + \frac{v_0^2 \sin^2{\theta}}{2g} \\
+    \argmax_{\theta}{y} &= \frac{\pi}{2} \\
+    \max{x} &= x_0 + \frac{v_0 \cos{\theta}}{g} \left (v_0 \sin{\theta} + \sqrt{v_0^2 \sin^2{\theta} + 2gy_0} \right) \\
+    \argmax_{\theta}{x} &= \cos^{-1} \sqrt{\frac{v_0^2 + 2gy_0}{2v_0^2 + 2gy_0}} \\
+\end{align*}
+
+\section{Newton's Laws}
+\subsection{Constant Mass}
+$$
+\sum F = \frac{dp}{dt} = ma
+$$
+
+\subsection{Variable Mass}
+$$
+\sum F = m \dot{v} + \dot{m} v
+$$
+
+\subsection{Polar Coordinates}
+\begin{align*}
+    v_r &= \dot{r} \\
+    v_{\theta} &= r \dot{\theta} \\
+    F_r &= m \left (\ddot{r} - r \dot{\theta}^2 \right) \\
+    F_{\theta} & = m \left (r \ddot{\theta} + 2 \dot{r} \dot{\theta} \right) \\
+\end{align*}
+
+\subsection{Spherical Coordinates}
+
+\begin{align*}
+    v_r &= \dot{r} \\
+    v_{\theta} &= r \dot{\theta} \cos{\phi} \\
+    v_{\phi} &= r \dot{\phi} \\
+    F_r &= m \left ( \ddot{r} - r \dot{\theta}^2 \cos^2 {\phi} - 2 r \dot{\phi}^2  \right) \\
+    F_{\theta} &= m \left (2 \dot{r} \dot{\theta} \cos{\phi} + r \ddot{\theta} \cos{\phi} - 2 r \dot{\theta} \dot{\phi} \sin{\phi} \right) \\
+    F_{\phi} &= m \left (2 \dot{r} \dot{\phi} + r \dot{\phi}^2 \sin{\phi} \cos{\phi} + r \ddot{\phi} \right) \\
+\end{align*}
+
+\subsection{Atwood Machines}
+
+$$
+m_{\text{eff}} = \frac{4m_1 m_2}{m_1 + m_2}
+$$
+
+\section{Oscillations}
+$$
+ma = -kx
+$$
+
+\begin{align*}
+    x(t) &= A \cos{(\omega t + \phi)} \\
+    \omega &= \sqrt{\frac{k}{m}} = \frac{2 \pi}{T} = 2\pi f\\
+    \tan{\phi} &= \frac{x_0}{v_0} \sqrt{\frac{k}{m}} \\
+\end{align*}
+
+\subsection{General Oscillators}
+Given a potential $V(x)$
+
+\begin{align*}
+    V''(x_0) &> 0 \\
+    \omega &= \sqrt{\frac{V''(x_0)}{m}} \\
+\end{align*}
+
+\section{Energy}
+\begin{align*}
+    K &= \frac{1}{2} mv^2 \\
+    U_g &= -mgh \\
+    U_s &= \frac{1}{2} kx^2 \\
+\end{align*}
+
+\section{Elastic Collisions}
+
+\begin{align*}
+    \frac{1}{2} m_1 v_1^2 + \frac{1}{2} m_2 v_2^2 &= \frac{1}{2} m_1 v_1 '^2 + \frac{1}{2} m_2 v_2'^2 \\
+    m_1 v_1 + m_2 v_2 &= m_1 v_1 ' + m_2 v_2 ' \\
+\end{align*}
+\[\begin{pmatrix}
+v_1 ' \\
+v_2 ' \\
+\end{pmatrix}
+= \frac{1}{m_1 + m_2}
+\begin{pmatrix}
+m_1 - m_2 & 2m_2 \\
+2m_1 & m_2 - m_1 \\
+\end{pmatrix}
+\begin{pmatrix}
+v_1 \\
+v_2 \\
+\end{pmatrix}
+\]
+
+\section{Inelastic Collisions}
+
+\begin{align*}
+    m_1 v_1 + m_2 v_2 &= \left (m_1 + m_2 \right) v' \\
+    v' &= v_1 \frac{m_1}{m_1 + m_2} + v_2 \frac{m_2}{m_1 + m_2} \\
+    \Delta K &= - \frac{1}{2} \frac{m_1 m_2}{m_1 + m_2} \left (v_1 - v_2 \right )^2 \\
+\end{align*}
+
+\section{Moments of Inertia}
+
+\begin{center}
+    \begin{tabular}{ ||c|c|c|| } 
+        \hline
+        \hline
+        \textbf{ Object } & \textbf{Axis Location} & \textbf{Moment} \\ 
+        \hline
+        \hline
+        Point Particle & Center & $MR^2$ \\
+        \hline
+        2 Point Particles & CM & $\mu R^2$ \\
+        \hline
+        Rod & CM & $\frac{1}{12} ML^2$ \\
+        \hline
+        Rod & End & $\frac{1}{3} ML^2$ \\
+        \hline
+        Cylindrical Shell & CM & $MR^2$ \\
+        \hline
+        Cylinder & CM & $\frac{1}{2} MR^2$ \\
+        \hline
+        Cone & CM & $\frac{3}{10} MR^2$ \\
+        \hline
+        Conical Shell & CM & $\frac{1}{2} MR^2$ \\
+        \hline
+        Spherical Shell & CM & $\frac{2}{3} MR^2$ \\
+        \hline
+        Sphere & CM & $\frac{2}{5} MR^2$ \\
+        \hline
+        \hline
+    \end{tabular}
+\end{center}
+
+\[
+    I = I_{\text{CM}} + md^2
+\]
+
+\section{Pendula}
+
+\begin{align*}
+\omega &= \sqrt{\frac{g}{\ell}} \\
+T &= 2 \pi \sqrt{\frac{\ell}{g}} \\
+\end{align*}
+
+\subsection{Center of Percussion}
+
+$$p = \frac{I}{dM}$$
+
+\section{Celestial Mechanics}
+
+\begin{align*}
+    F_{\text{ab}} &= - \frac{G m_{\text{a}} m_{\text{b}}}{r^2} \\
+    v_{\text{orbit}} &= \sqrt{\frac{GM}{R}} \\
+    v_{\text{escape}} &= \sqrt{\frac{2GM}{R}} \\
+    \mu &= \frac{m_{\text{a}} m_{\text{b}}}{m_{\text{a}} + m_{\text{b}}} \\
+    v^2 &= GM \left ( \frac{2}{r} - \frac{1}{a} \right) \\
+    E &= - \frac{Gm_{\text{a}} m_{\text{b}}}{2a} \\
+    U_{\text{self}} &= - \frac{Gm^2}{2R} \\
+    \min{r} &= a \left (1 - e \right) \\
+    \argmin_{v}{r} &= \sqrt{\frac{GM}{a} \frac{1+e}{1-e}} \\
+    \max{r} &= a \left (1 + e \right) \\
+    \argmax_{v}{r} &= \sqrt{\frac{GM}{a} \frac{1-e}{1+e}} \\
+    \frac{a^3}{T^2} &= \frac{GM}{4 \pi^2} \\
+    e &= \sqrt{1 + \frac{2E v_0^2 r_0^2}{G^2 m M^2}} = \frac{r_{\text{max}} - r_{\text{min}}}{r_{\text{max}} + r_{\text{min}}}\\
+    e = 0  \Longleftrightarrow\ & \text{Circle} \Longleftrightarrow E = - \frac{Gm_a m_b}{R}\\
+    0 < e < 1  \Longleftrightarrow\ & \text{Ellipse} \Longleftrightarrow E < 0 \\
+    e = 1  \Longleftrightarrow\ & \text{Parabola} \Longleftrightarrow E = 0 \\
+    e > 1  \Longleftrightarrow\ & \text{Hyperbola} \Longleftrightarrow E > 0 \\
+\end{align*}
+
+\section{Fluids}
+\begin{align*}
+    P_1 + \rho gh_1 + \frac{1}{2} \rho v_1^2 &= P_2 + \rho gh_2 + \frac{1}{2} \rho v_2^2  \\
+    A_1 v_1 &= A_2 v_2 \\
+    \frac{dp}{dy} &= - \rho g \\
+    F &= \eta A \frac{dv}{dy} \\
+\end{align*}
+
+
+\end{document}
