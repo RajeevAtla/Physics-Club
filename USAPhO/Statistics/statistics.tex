@@ -1,0 +1,169 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\everymath{\displaystyle}
+\usepackage[inline]{asymptote}
+\DeclareMathOperator\erf{erf}
+
+
+\begin{document}
+\section{Introduction}
+The USAPhO exam is the second exam in the selection process for the US Physics Team, which is often seen as the pinnacle of achievement in high school physics.
+It's hard to judge which scores correspond to which level of achievement (none, honorable mention, bronze, silver, gold, camp) since the actual scores of the exam are never released to students and hard cutoffs are never published.
+
+However, in 2017, some statistics about the exam were published at the end of the 2017 USAPhO's solutions manual.
+They form the basis of our report, along with data from the medal list, qualifier list, and camper list.
+
+\section{Log-Normal Distributions}
+To understand the further analysis, one must first understand log-normal distributions.
+Consider a random variable $X$.
+In a normal distribution, we say that $X$ is normally distributed.
+On the other hand, for a log-normal distribution, we say that $\ln(X)$ is normally distributed.
+
+If $X$ has a mean of $\mu_X$ and standard deviation $\sigma_x$, then its log-normal distribution will have
+
+\begin{align*}
+    \mu &= \ln \left( \frac{\mu_x^2}{\sqrt{\mu_x^2 + \sigma_x^2}} \right) \\
+    \sigma &= \sqrt{\ln \left (1 + \frac{\sigma_x^2}{\mu_x^2} \right)} \\
+\end{align*}
+
+Furthermore, its first quantile, median, and second quantile will be
+
+\begin{align*}
+    Q_{1} &= \exp{\left (\mu - \sigma \sqrt{2} \erf^{-1} \left ( \frac{1}{2} \right) \right)} \\
+    \tilde{x} &= \exp{\left ( \mu \right)} \\
+    Q_{3} &= \exp{\left (\mu + \sigma \sqrt{2} \erf^{-1} \left ( \frac{1}{2} \right) \right)} \\
+\end{align*}
+
+Here, $\erf^{-1} {x}$ is the inverse error function.
+
+\section{Data}
+Below are the parameters provided by AAPT at the end of the 2017 USAPhO Solutions.
+
+
+\begin{center}
+    \begin{tabular}{ c c }
+     \textbf{Parameter} & \textbf{Value}\\ 
+     Mean &  53 \\  
+     Standard Deviation & 29 \\    
+     Maximum & 163 \\
+     Upper Quartile & 73 \\
+     Median & 49 \\
+     Lower Quartile & 30 \\
+     Minimum & 5 \\
+    \end{tabular}
+\end{center}
+
+\begin{center}
+    \begin{tabular}{ c c }
+     \textbf{Achievement Level} & \textbf{Count of People}\\ 
+     Qualifiers & 487 \\  
+     Honorable Mention & 93 \\    
+     Bronze Medal & 89 \\
+     Silver Medal & 64 \\
+     Gold Medal & 43 \\
+     Camper & 22 \\
+    \end{tabular}
+\end{center}
+
+\section{Calculation of Parameters}
+Using $\mu_x = 53$ and $\sigma_x = 29$, we can find $\mu$ and $\sigma$.
+
+\begin{align*}
+    \mu &= 3.839 \\
+    \sigma &= 0.512 \\
+\end{align*}
+
+\section{Distribution}
+The probability density function (PDF) of the log-normal distribution is
+
+\[
+    P(X = x) = \frac{1}{x \sigma \sqrt{2 \pi} } e^{- \frac{\left (\ln(x) - \mu \right)^2}{2 \sigma^2}}
+\]
+
+For the $\mu = 3.839$ and $\sigma = 0.262$ we found earlier, we can graph the distribution.
+
+
+\begin{center}
+    \begin{asy}
+        import graph;
+        size(200, 10000);
+        
+
+        real meanX = 53.0;
+        real stdvX = 29.0;
+
+        real mean = log( (meanX^2) / (sqrt(meanX^2 + stdvX^2)) );
+        real stdv = sqrt(log( 1 + (stdvX/meanX)^2 ));
+
+        real invErf = 0.47693627;
+
+        real f(real x) 
+        {
+            return (500/(stdv*x)) * exp(-((log(x) - mean)^2)/(2*stdv^2));
+        }
+
+        draw((meanX, 0) -- (meanX, f(meanX)));
+        draw((exp(mean), 0) -- (exp(mean), f(exp(mean))));
+
+        draw(graph(f, 0.1, 163, operator..), red+linewidth(1.5));
+
+        draw((0, 0) -- (163, 0), arrow = Arrow(TeXHead));
+        draw((0, 0) -- (0, 70), arrow = Arrow(TeXHead));
+
+        label("$x$", (163, 0), E);
+
+        dot((meanX, 0));
+        dot((meanX, f(meanX)));
+        dot((exp(mean), 0));
+        dot((exp(mean), f(exp(mean))));
+
+        
+
+        label("$\mu_x$", (meanX, f(meanX)), NE);
+        
+        label("$P(x)$", (0, 70), align = N);
+
+        dot((0, 0));
+    \end{asy}
+\end{center}
+
+
+In order to validate this distribution, we can estimate some parameters using the formulae we have defined earlier.
+
+\begin{center}
+    \begin{tabular}{ c c c }
+     \textbf{Parameter} & \textbf{Actual Parameter Value} & \textbf{Calculated Parameter Value}\\ 
+     Mean &  53 & 53\\  
+     Standard Deviation & 29 & 29\\    
+     Upper Quartile & 73 & 65.650\\
+     Median & 49 & 46.479\\
+     Lower Quartile & 30 & 32.906\\
+    \end{tabular}
+\end{center}
+
+We can therefore see that the distribution is fairly accurate for lower scores, and starts diverging for higher scores, as evidenced by the difference in the upper quartile values.
+We proceed, then, with caution, as much of this estimation is based on that.
+
+\section{Score Estimation}
+
+The USAPhO scores are often determined in percentiles, so it's useful to calculate this.
+Let a student score above a percent $p$ of USAPhO takers.
+We want to find what score they get (in statistics this is known as the quantile function).
+To do this, we use the CDF of the log-normal distribution.
+
+\[
+    F(x) = \frac{1}{2} + \frac{1}{2} \erf{\left ( \frac{\ln(x) - \mu}{\sigma \sqrt{2}} \right)}
+\]
+Setting this equal to $p$, we solve and find that the score $x$ needed to score above $p$ percent of testakers is
+
+\[
+    x = \exp(\mu + \sigma \sqrt{2} \erf^{-1} (2p-1))
+\]
+We can finally use the data we've gotten from the medal list, but must first tabulate it into a more approachable form.
+A key assumption we must make here is the number of people that take the USAPhO after qualifying for it.
+Let the number of people be $n$.
+
+Then, the the gold medalists would be in the top 
+
+\end{document}

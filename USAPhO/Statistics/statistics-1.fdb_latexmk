@@ -1,0 +1,16 @@
+# Fdb version 3
+["cusdep asy tex statistics-1"] 1613974636 "statistics-1.asy" "statistics-1.tex" "statistics-1" 1614225378
+  "statistics-1.asy" 1614224089 1069 1c556b7c295e023708149ff624ea48db ""
+  (generated)
+  "statistics-1.tex"
+["pdflatex"] 1613974639 "statistics-1.tex" "statistics-1.pdf" "statistics-1" 1614225378
+  "c:/texlive/2020/texmf-dist/fonts/map/fontname/texfonts.map" 1605562314 3524 cb3e574dea2d1052e39280babc910dc8 ""
+  "c:/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmr12.tfm" 1605559362 1288 655e228510b4c2a1abe905c368440826 ""
+  "c:/texlive/2020/texmf-dist/web2c/texmf.cnf" 1605563796 39451 15a3ebee027466ecb89701aa91dfebaf ""
+  "c:/texlive/2020/texmf-var/web2c/pdftex/pdflatex.fmt" 1613932240 2616684 6a036a136b8e4c606ea8f852ec31e768 ""
+  "c:/texlive/2020/texmf.cnf" 1605571221 713 e69b156964470283e0530f5060668171 ""
+  "statistics-1.aux" 1613973498 9 a94a2480d3289e625eea47cd1b285758 ""
+  "statistics-1.tex" 1613974639 761 adbc170098cd3f5b69ff6a0a6777d55b "cusdep asy tex statistics-1"
+  (generated)
+  "statistics-1.pdf"
+  "statistics-1.log"
